@@ -19,6 +19,14 @@ class App extends Component {
         date: '14/2'
       }]
     }
+
+    deleteThis = () =>{
+      console.log('hi! i should delete but...')
+    }
+
+    addThis = () =>{
+      console.log('hi! i should add but...')
+    }
   render() {
 
     return (
@@ -38,11 +46,12 @@ class App extends Component {
                       id={elem.id}
                       title={elem.title}
                       description={elem.description}
+                      deleteThis={this.deleteThis}
                   />
                   )
               })
             }
-            <Button  floating large className='blue' waves='light' icon='add' s={2}/>
+            <Button floating large className='blue' waves='light' icon='add' s={2} onClick={this.addThis}/>
           </Row>
         </p>
       </div>
