@@ -53,7 +53,7 @@ class App extends Component {
     addThis = (e) =>{
      
       var newTask = {
-        id: this.state.tasks[this.state.tasks.length-1].id+1 && 0,
+        id: this.state.tasks[this.state.tasks.length-1].id+1,
         title: this.state.newTaskTitle,
         description: this.state.newTaskDescription
       }
