@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import logo from '../logo.svg';
 import './App.css';
-
+import Masonry from 'masonry-layout'
 import Card from './card/card.js'
 import { Button, Row, Navbar, NavItem, Col, Modal, Icon, Input } from 'react-materialize'
 
 class App extends Component {
+
   constructor(props){
     super()
     this.state={
@@ -64,6 +65,21 @@ class App extends Component {
       })
     }
 
+    editThis = (e) =>{
+     var newValue = e.target.value
+     var id = e.target.id
+     var newTasks = this.state.tasks.map(task =>{
+           if(task.id == id){
+              task.description = newValue
+           }
+           return task
+         })
+     console.log(newTasks)
+     this.setState({
+        tasks: newTasks
+      })
+    }
+
 
   render() {
     return (
@@ -76,7 +92,7 @@ class App extends Component {
           <p className="App-intro">
           <h2>Add new todo's</h2>
 
-           <Row>
+           <Row className="row-todos">
            {
                   console.log(this.state.tasks)
                 }
@@ -84,11 +100,13 @@ class App extends Component {
 
                 this.state.tasks.map((elem)=>{
                   return(
-                    <Card 
+                    <Card
+                        className="card-todo"
                         id={elem.id}
                         title={elem.title}
                         description={elem.description}
                         deleteThis={this.deleteThis}
+                        editThis={this.editThis}
                     />
                     )
                 })
@@ -106,7 +124,6 @@ class App extends Component {
                   </Row>
               </Modal>
               </Row>
-           {/*  />*/}
             
           </p>
       </div>
